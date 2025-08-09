@@ -39,7 +39,7 @@ This MCP server provides the following tools for managing your Micro.blog books:
 
 1. **Clone this repository:**
    ```bash
-   git clone https://github.com/yourusername/micro-mcp-server.git
+   git clone https://github.com/7robots/micro-mcp-server.git
    cd micro-mcp-server
    ```
 

@@ -2,6 +2,7 @@
 """Generate Claude Desktop configuration for the Micro.blog Books MCP Server."""
 
 import json
+import os
 import shutil
 import sys
 from pathlib import Path
@@ -53,7 +54,7 @@ def generate_config():
                 "command": python_path,
                 "args": [server_path],
                 "env": {
-                    "MICRO_BLOG_BEARER_TOKEN": "your_token_here"
+                    "MICRO_BLOG_BEARER_TOKEN": os.environ.get("MICRO_BLOG_BEARER_TOKEN", "your_token_here")
                 }
             }
         }
@@ -72,7 +73,7 @@ def main():
         print("=" * 50)
         print("\nInstructions:")
         print("1. Copy the configuration above")
-        print("2. Replace 'your_token_here' with your actual Micro.blog bearer token")
+        print("2. If you see 'your_token_here', set MICRO_BLOG_BEARER_TOKEN environment variable first")
         print("3. Add it to your Claude Desktop config file:")
         print("   - macOS: ~/Library/Application Support/Claude/claude_desktop_config.json")
         print("   - Windows: %APPDATA%\\Claude\\claude_desktop_config.json")

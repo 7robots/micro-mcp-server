@@ -89,7 +89,7 @@ Run the configuration generator:
 python get_config.py
 ```
 
-This will output the exact configuration you need and save it to `claude_desktop_config.json`.
+This will output the exact configuration you need (using uv commands) and save it to `claude_desktop_config.json`.
 
 #### Option B: Manual Configuration
 
@@ -104,8 +104,12 @@ Add the following to your configuration:
 {
   "mcpServers": {
     "micro-books": {
-      "command": "/opt/anaconda3/bin/python3",
+      "command": "/path/to/uv",
       "args": [
+        "run",
+        "--directory",
+        "/path/to/micro-mcp-server",
+        "python",
         "/path/to/micro-mcp-server/run_server.py"
       ],
       "env": {
@@ -117,9 +121,10 @@ Add the following to your configuration:
 ```
 
 **Important Notes:**
-- The configuration generator automatically finds a compatible Python version
+- The configuration generator automatically finds your uv installation and project path
 - Replace `your_token_here` with your actual Micro.blog bearer token
-- Use **full absolute paths** for both the Python executable and script
+- Use **full absolute paths** for the uv executable and project directory
+- Make sure uv is installed and available in your PATH
 
 ### 4. Restart Claude Desktop
 
@@ -168,13 +173,13 @@ uv run python run_server.py --bearer-token "your_token_here"
 
 ### Common Issues
 
-1. **`spawn python ENOENT` error**: This means Claude Desktop can't find the Python executable. Use the configuration generator (`python get_config.py`) to get the correct paths.
+1. **`spawn uv ENOENT` error**: This means Claude Desktop can't find the uv executable. Make sure uv is installed and in your PATH, or use the configuration generator (`python get_config.py`) to get the correct paths.
 
 2. **Import errors**: Make sure you've run the setup script (`python install.py`) to install FastMCP and dependencies.
 
 3. **Authentication errors**: Verify your `MICRO_BLOG_BEARER_TOKEN` is set correctly and valid in the Claude Desktop configuration.
 
-4. **Path errors**: Ensure both the Python executable and `run_server.py` paths are **full absolute paths** in your configuration.
+4. **Path errors**: Ensure both the uv executable and project directory paths are **full absolute paths** in your configuration.
 
 ### Testing the Server
 

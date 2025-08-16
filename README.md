@@ -29,7 +29,8 @@ This MCP server provides the following tools for managing your Micro.blog books:
 
 ## Prerequisites
 
-- **Python 3.8 or higher** (FastMCP has lower requirements)
+- **Python 3.10 or higher** (required by FastMCP)
+- **uv** package manager ([installation guide](https://docs.astral.sh/uv/getting-started/installation/))
 - **Micro.blog account** with API access
 - **Claude Desktop** application
 
@@ -47,7 +48,7 @@ This MCP server provides the following tools for managing your Micro.blog books:
    ```bash
    python install.py
    ```
-   This installs FastMCP and all dependencies, then verifies everything works.
+   This installs FastMCP and all dependencies using uv, then verifies everything works.
 
 ### Manual Setup
 
@@ -55,13 +56,13 @@ If you prefer manual installation:
 
 1. **Install dependencies:**
    ```bash
-   pip install -r requirements.txt
+   uv sync
    ```
-   This installs FastMCP and all required packages.
+   This installs FastMCP and all required packages using uv.
 
 2. **Verify installation:**
    ```bash
-   python run_server.py --help
+   uv run python run_server.py --help
    ```
 
 ## Setup
@@ -160,7 +161,7 @@ To run the server in development mode:
 
 ```bash
 cd micro-mcp-server
-python run_server.py --bearer-token "your_token_here"
+uv run python run_server.py --bearer-token "your_token_here"
 ```
 
 ## Troubleshooting
@@ -181,7 +182,7 @@ You can test the server independently:
 
 ```bash
 # Test with your actual token
-python run_server.py --bearer-token "your_actual_token"
+uv run python run_server.py --bearer-token "your_actual_token"
 
 # Or test the installation
 python install.py

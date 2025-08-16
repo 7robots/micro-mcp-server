@@ -7,17 +7,14 @@ from pathlib import Path
 
 
 def install_dependencies():
-    """Install required dependencies."""
-    requirements_file = Path(__file__).parent / "requirements.txt"
-    
-    print("Installing dependencies...")
+    """Install required dependencies using uv."""
+    print("Installing dependencies with uv...")
     try:
-        subprocess.check_call([
-            sys.executable, "-m", "pip", "install", "-r", str(requirements_file)
-        ])
+        subprocess.check_call(["uv", "sync"])
         print("✓ Dependencies installed successfully")
     except subprocess.CalledProcessError as e:
         print(f"✗ Failed to install dependencies: {e}")
+        print("  Make sure you have uv installed: https://docs.astral.sh/uv/getting-started/installation/")
         return False
     
     return True
@@ -26,13 +23,15 @@ def install_dependencies():
 def test_server():
     """Test that the server can be imported and created."""
     try:
-        from micro_mcp_server.server import create_server
-        server = create_server("test_token")
+        result = subprocess.run([
+            "uv", "run", "python", "-c", 
+            "from micro_mcp_server.server import create_server; create_server('test_token')"
+        ], capture_output=True, text=True, check=True)
         print("✓ Server can be created successfully")
         return True
-    except Exception as e:
+    except subprocess.CalledProcessError as e:
         print(f"✗ Server test failed: {e}")
-        print("  Make sure you've installed the dependencies with pip install -r requirements.txt")
+        print("  Make sure you've installed the dependencies with uv sync")
         return False
 
 

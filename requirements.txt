@@ -1,8 +1,0 @@
-# FastMCP - Simple MCP server framework
-fastmcp>=0.2.0
-
-# HTTP client
-httpx>=0.27
-
-# CLI framework  
-click>=8.0

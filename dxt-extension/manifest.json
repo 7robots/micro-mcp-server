@@ -1,0 +1,106 @@
+{
+  "dxt_version": "1.0",
+  "name": "micro-blog-books",
+  "display_name": "Micro.blog Books",
+  "version": "1.0.0",
+  "description": "Manage your Micro.blog book collections, bookshelves, and reading goals through Claude",
+  "long_description": "# Micro.blog Books MCP Server\n\nAn MCP (Model Context Protocol) server that provides access to the Micro.blog Books API, allowing Claude to manage your book collections, bookshelves, and reading goals.\n\n## Features\n\n### Bookshelf Management\n- Get all your bookshelves\n- Get books in a specific bookshelf\n- Create new bookshelves\n- Rename existing bookshelves\n\n### Book Management\n- Add new books to bookshelves\n- Move books between bookshelves\n- Remove books from bookshelves\n- Update book cover images\n\n### Reading Goals\n- Get your reading goals\n- Track progress toward specific reading goals\n- Update reading goal targets and progress\n\n## Usage\n\nOnce installed, you can ask Claude to help manage your books. For example:\n\n- \"Show me all my bookshelves\"\n- \"Add a new book called 'Project Hail Mary' by Andy Weir to my 'Currently reading' bookshelf\"\n- \"Move book ID 79 to bookshelf ID 23\"\n- \"What are my reading goals for this year?\"\n- \"Update my reading goal to 25 books\"\n\n## Security\n\nThis extension requires your Micro.blog bearer token to authenticate with the API. The token is stored securely in your local configuration and is only used to make API requests to Micro.blog on your behalf.",
+  "author": {
+    "name": "Micro.blog Books MCP Team",
+    "email": "support@example.com",
+    "url": "https://github.com/7robots/micro-mcp-server"
+  },
+  "repository": "https://github.com/7robots/micro-mcp-server",
+  "homepage": "https://github.com/7robots/micro-mcp-server",
+  "documentation": "https://github.com/7robots/micro-mcp-server#readme",
+  "support": "https://github.com/7robots/micro-mcp-server/issues",
+  "license": "MIT",
+  "keywords": [
+    "micro.blog",
+    "books",
+    "reading",
+    "bookshelf",
+    "goals",
+    "mcp",
+    "api"
+  ],
+  "server": {
+    "type": "node",
+    "entry_point": "server/index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": ["${entry_point}"],
+      "env": {
+        "MICRO_BLOG_BEARER_TOKEN": "${user_config.bearer_token}"
+      }
+    }
+  },
+  "tools": [
+    {
+      "name": "get_bookshelves",
+      "description": "Get all bookshelves from Micro.blog"
+    },
+    {
+      "name": "get_bookshelf_books", 
+      "description": "Get books in a specific bookshelf"
+    },
+    {
+      "name": "add_bookshelf",
+      "description": "Create a new bookshelf"
+    },
+    {
+      "name": "rename_bookshelf",
+      "description": "Rename an existing bookshelf"
+    },
+    {
+      "name": "add_book",
+      "description": "Add a new book to a bookshelf"
+    },
+    {
+      "name": "move_book",
+      "description": "Move a book to a different bookshelf"
+    },
+    {
+      "name": "remove_book",
+      "description": "Remove a book from a bookshelf"
+    },
+    {
+      "name": "change_book_cover",
+      "description": "Change the cover image for a book"
+    },
+    {
+      "name": "get_reading_goals",
+      "description": "Get all reading goals"
+    },
+    {
+      "name": "get_goal_progress",
+      "description": "Get progress toward a specific reading goal"
+    },
+    {
+      "name": "update_reading_goal",
+      "description": "Update a reading goal's target or progress"
+    }
+  ],
+  "user_config": [
+    {
+      "name": "bearer_token",
+      "display_name": "Micro.blog Bearer Token",
+      "description": "Your Micro.blog API bearer token for authentication",
+      "type": "string",
+      "sensitive": true,
+      "required": true,
+      "placeholder": "Enter your Micro.blog bearer token"
+    }
+  ],
+  "compatibility": {
+    "claude_desktop": {
+      "min_version": "0.7.0"
+    },
+    "platforms": ["darwin", "linux", "win32"],
+    "runtime": {
+      "node": {
+        "min_version": "18.0.0"
+      }
+    }
+  }
+}

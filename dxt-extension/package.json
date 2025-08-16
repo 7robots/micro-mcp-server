@@ -1,0 +1,39 @@
+{
+  "name": "micro-blog-books-dxt",
+  "version": "1.0.0",
+  "description": "Micro.blog Books MCP Server Desktop Extension",
+  "type": "module",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --inspect server/index.js",
+    "build": "node build.js",
+    "package": "npm run build"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.1"
+  },
+  "devDependencies": {
+    "archiver": "^5.3.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Micro.blog Books MCP Team",
+    "email": "support@example.com",
+    "url": "https://github.com/7robots/micro-mcp-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/7robots/micro-mcp-server.git"
+  },
+  "keywords": [
+    "micro.blog",
+    "books",
+    "mcp",
+    "desktop-extension",
+    "dxt"
+  ]
+}

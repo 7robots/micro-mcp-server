@@ -34,9 +34,31 @@ This MCP server provides the following tools for managing your Micro.blog books:
 - **Micro.blog account** with API access
 - **Claude Desktop** application
 
-## Installation
+## Installation Options
 
-### Quick Setup (Recommended)
+There are multiple ways to use this MCP server:
+
+1. **Desktop Extension (DXT)** - Recommended for most users
+2. **Traditional MCP Server** - For advanced users or custom setups
+3. **Modal.com Deployment** - For remote hosting
+
+### Option 1: Desktop Extension (DXT) - Recommended
+
+The easiest way to install is using the Desktop Extension format:
+
+1. **Download the extension**: Get the `.dxt` file from the releases page
+2. **Install in Claude Desktop**:
+   - Open Claude Desktop (version 0.7.0+)
+   - Go to Settings → Extensions
+   - Click "Install Extension" and select the `.dxt` file
+   - Enter your Micro.blog bearer token when prompted
+3. **Start using**: Ask Claude to help manage your books!
+
+See the [DXT Extension README](dxt-extension/README.md) for detailed instructions.
+
+### Option 2: Traditional MCP Server
+
+#### Quick Setup (Recommended)
 
 1. **Clone this repository:**
    ```bash

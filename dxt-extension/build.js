@@ -74,20 +74,12 @@ async function buildExtension() {
     }
   }
 
-  // Add node_modules dependencies (production only)
+  // Add ALL node_modules (including transitive dependencies)
   const nodeModulesPath = path.join(__dirname, 'node_modules');
   if (fs.existsSync(nodeModulesPath)) {
-    // Only include production dependencies
-    const packageJson = JSON.parse(fs.readFileSync(path.join(__dirname, 'package.json'), 'utf8'));
-    const dependencies = Object.keys(packageJson.dependencies || {});
-    
-    for (const dep of dependencies) {
-      const depPath = path.join(nodeModulesPath, dep);
-      if (fs.existsSync(depPath)) {
-        archive.directory(depPath, `node_modules/${dep}`);
-        console.log(`  Added dependency: ${dep}`);
-      }
-    }
+    console.log(`  Adding entire node_modules directory...`);
+    archive.directory(nodeModulesPath, 'node_modules');
+    console.log(`  ✓ Added all dependencies and transitive dependencies`);
   }
 
   // Finalize the archive

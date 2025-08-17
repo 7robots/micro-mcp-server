@@ -26,7 +26,6 @@ A Desktop Extension (DXT) version of the Micro.blog Books MCP server that provid
 ### Prerequisites
 
 - **Claude Desktop** (version 0.7.0 or higher)
-- **Node.js** (version 18.0.0 or higher)
 - **Micro.blog account** with API access
 
 ### Quick Installation
@@ -58,11 +57,7 @@ If you want to install from source:
 
 3. **Package the extension**:
    ```bash
-   # Using the dxt CLI tool (if available)
-   dxt pack .
-   
-   # Or manually create a zip file with all contents
-   zip -r micro-blog-books.dxt . -x "node_modules/*" ".git/*"
+   npm run build
    ```
 
 4. **Install in Claude Desktop** as described above
@@ -132,7 +127,6 @@ Once installed, you can ask Claude to help manage your books. Here are some exam
 
 4. **Extension not appearing in Claude Desktop**:
    - Ensure you're using Claude Desktop version 0.7.0 or higher
-   - Verify Node.js 18.0.0+ is installed on your system
    - Check that the extension package was installed correctly
 
 ### Debug Mode
@@ -181,8 +175,7 @@ dxt-extension/
 
 3. **Package the extension**:
    ```bash
-   # Create a zip file with all necessary files
-   zip -r micro-blog-books.dxt . -x "node_modules/*" ".git/*" "*.log"
+   npm run build
    ```
 
 ### Contributing

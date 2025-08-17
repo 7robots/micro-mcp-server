@@ -646,6 +646,7 @@ async function main() {
     console.error("✓ Micro.blog Books MCP Server running");
   } catch (error) {
     console.error("✗ Failed to start server:", error.message);
+    console.error("✗ Stack trace:", error.stack);
     process.exit(1);
   }
 }

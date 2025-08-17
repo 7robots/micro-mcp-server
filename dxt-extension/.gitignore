@@ -31,8 +31,7 @@ Thumbs.db
 *.swp
 *.swo
 
-# Package files
-*.dxt
+# Package files  
 *.zip
 *.tar.gz
 
